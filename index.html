@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f6f1e8" />
+  <title>Keynote — Piano note practice</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Keynote home"><span class="brand-mark">♩</span><span>keynote</span></a>
+    <div class="topbar-actions">
+      <button id="themeToggle" class="utility-btn" type="button" aria-pressed="false" title="Switch color theme"><span class="utility-icon" aria-hidden="true">☾</span><span class="utility-label">Dark mode</span></button>
+      <div class="streak" title="Correct answers in a row"><span>✦</span> <b id="streakCount">0</b> streak</div>
+    </div>
+  </header>
+
+  <main>
+    <section id="setupScreen" class="setup screen active">
+      <div class="eyebrow">A quiet place to practice</div>
+      <h1>Read the note.<br><em>Find the key.</em></h1>
+      <p class="intro">Build fluency one note at a time. Choose how you want to answer, then connect the staff to the piano.</p>
+
+      <div class="setup-panel">
+        <div class="setting-block">
+          <div class="step-label"><span>01</span> Choose an answer style</div>
+          <div class="choice-grid" id="modeChoices">
+            <button class="choice-card selected" data-mode="multiple" aria-pressed="true">
+              <span class="choice-icon options-icon"><i>A</i><i>B</i><i>C</i></span>
+              <span><b>Multiple choice</b><small>Pick from four note names</small></span>
+              <span class="radio"></span>
+            </button>
+            <button class="choice-card" data-mode="blank" aria-pressed="false">
+              <span class="choice-icon type-icon">Aa</span>
+              <span><b>Fill in the blank</b><small>Type the note yourself</small></span>
+              <span class="radio"></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="setting-block clef-setting">
+          <div class="step-label"><span>02</span> Choose your clef</div>
+          <div class="segmented" id="clefChoices">
+            <button data-clef="treble">𝄞 <span>Treble</span></button>
+            <button data-clef="bass">𝄢 <span>Bass</span></button>
+            <button class="selected" data-clef="both">♬ <span>Both</span></button>
+          </div>
+        </div>
+
+        <button id="startBtn" class="primary-btn">Start practicing <span>→</span></button>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="game screen">
+      <div class="game-head">
+        <button id="backBtn" class="text-btn">← Change setup</button>
+        <div class="score"><span id="roundLabel">Note 1</span><i></i><strong id="scoreLabel">0 correct</strong></div>
+      </div>
+
+      <div class="practice-card">
+        <div class="prompt-copy">
+          <span id="clefBadge" class="pill">TREBLE CLEF</span>
+          <h2>What note is this?</h2>
+          <p id="phaseHint">Name the note on the staff.</p>
+        </div>
+
+        <div class="staff-wrap" aria-label="Music staff with a note">
+          <svg id="staff" viewBox="0 0 520 250" role="img"></svg>
+        </div>
+
+        <div id="answerArea" class="answer-area"></div>
+        <div id="feedback" class="feedback" aria-live="polite"></div>
+      </div>
+
+      <section id="pianoSection" class="piano-section locked">
+        <div class="piano-heading">
+          <div><span class="step-label"><span>02</span> FIND IT ON THE PIANO</span><h3>Now play that note</h3></div>
+          <div class="piano-heading-actions">
+            <button id="keyboardViewToggle" class="utility-btn keyboard-view-toggle" type="button" aria-pressed="false"><span class="utility-icon" aria-hidden="true">↔</span><span class="utility-label">Fit whole piano</span></button>
+            <p id="pianoHint">Name the note above to unlock the keys.</p>
+          </div>
+        </div>
+        <div class="keyboard-shell">
+          <div class="keyboard-scroll"><div id="keyboard" class="keyboard"></div></div>
+          <div class="range-labels"><span>A0 · LOWEST</span><span>C4 · MIDDLE C</span><span>C8 · HIGHEST</span></div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
